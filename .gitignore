@@ -21,3 +21,11 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# IDEs and editors
+/api_rest/bin
+/api_rest/target
+/api_rest/.classpath
+/api_rest/.factorypath
+/api_rest/.project
+/api_rest/.settings
