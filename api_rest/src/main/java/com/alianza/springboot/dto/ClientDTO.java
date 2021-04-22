@@ -10,7 +10,7 @@ import lombok.Data;
  * @author cctorresr
  */
 @Data
-public class Client {
+public class ClientDTO {
 
 	private String sharedKey;
 	private String bussinessID;
@@ -18,10 +18,10 @@ public class Client {
 	private BigInteger phone;
 	private Date dataAdded;
 
-	public Client() {
+	public ClientDTO() {
 	}
 
-	public Client(String sharedKey, String bussinessID, String email, BigInteger phone, Date dataAdded) {
+	public ClientDTO(String sharedKey, String bussinessID, String email, BigInteger phone, Date dataAdded) {
 		this.sharedKey = sharedKey;
 		this.bussinessID = bussinessID;
 		this.email = email;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.alianza.springboot.dto.Client;
+import com.alianza.springboot.dto.ClientDTO;
 
 /**
  *
@@ -12,6 +12,8 @@ import com.alianza.springboot.dto.Client;
  */
 public interface IClientService {
 
-	public ResponseEntity<List<Client>> getClients();
+	public ResponseEntity<List<ClientDTO>> getClients();
+
+	public ResponseEntity<ClientDTO> createClient(ClientDTO clientDTO);
 
 }

@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alianza.springboot.dto.Client;
+import com.alianza.springboot.dto.ClientDTO;
 import com.alianza.springboot.service.IClientService;
 
 /**
@@ -19,6 +22,7 @@ import com.alianza.springboot.service.IClientService;
  */
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/client")
 public class ClientController {
 
 	@Autowired
@@ -26,10 +30,16 @@ public class ClientController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
-	@GetMapping(path = "/client", produces = "application/json")
-	public ResponseEntity<List<Client>> getClients() {
+	@GetMapping(produces = "application/json")
+	public ResponseEntity<List<ClientDTO>> getClients() {
 		logger.info("getClients");
 		return clientService.getClients();
+	}
+
+	@PostMapping(consumes = "application/json", produces = "application/json")
+	public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTO) {
+		logger.info("createClient - ClientDTO: {}", clientDTO);
+		return clientService.createClient(clientDTO);
 	}
 
 }
