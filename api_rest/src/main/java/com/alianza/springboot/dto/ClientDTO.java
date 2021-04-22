@@ -21,11 +21,4 @@ public class ClientDTO {
 	public ClientDTO() {
 	}
 
-	public ClientDTO(String sharedKey, String bussinessID, String email, BigInteger phone, Date dataAdded) {
-		this.sharedKey = sharedKey;
-		this.bussinessID = bussinessID;
-		this.email = email;
-		this.phone = phone;
-		this.dataAdded = dataAdded;
-	}
 }
