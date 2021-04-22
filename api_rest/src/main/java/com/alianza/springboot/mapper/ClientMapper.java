@@ -18,24 +18,27 @@ public interface ClientMapper {
 	ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
 	/**
-	 * @param entity
+	 * Mapea Client entity a ClientDTO.
+	 * 
+	 * @param client entity
 	 * @return ClientDTO 
-	 * Mapea Client entity a ClientDTO
 	 */
 	ClientDTO clientToClientDTO(Client client);
 
 	/**
-	 * @param ClientDTO
+	 * Mapea ClientDTO a Client entity.
+	 * 
+	 * @param clientDTO
 	 * @return Client entity
-	 * Mapea ClientDTO a Client entity
 	 */
-	Client clientDTOToClient(ClientDTO client);
+	Client clientDTOToClient(ClientDTO clientDTO);
 
 	/**
-	 * @param entityList
+	 * Mapea lista de Client entity a lista ClientDTO.
+	 * 
+	 * @param clientList
 	 * @return ClientDTO 
-	 * Mapea lista de Client entity a lista ClientDTO
 	 */
-	List<ClientDTO> clientListToClientDTOList(List<Client> client);
+	List<ClientDTO> clientListToClientDTOList(List<Client> clientList);
 	
 }

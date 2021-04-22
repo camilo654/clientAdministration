@@ -18,7 +18,4 @@ public class ClientDTO {
 	private BigInteger phone;
 	private Date dataAdded;
 
-	public ClientDTO() {
-	}
-
 }

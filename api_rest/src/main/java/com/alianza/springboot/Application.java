@@ -28,6 +28,7 @@ public class Application {
 
 	}
 
+	// Se crean y agregan 4 clientes a la DB
 	@Bean
 	public CommandLineRunner createClients(ClientRepository clientRepository) {
 		return args -> {

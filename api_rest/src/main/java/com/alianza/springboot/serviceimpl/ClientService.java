@@ -55,6 +55,7 @@ public class ClientService implements IClientService {
 			Client cliente = clientRepository.save(clientMapper.clientDTOToClient(clientDTO));
 			logger.info("createClient - cliente creado: {}", cliente);
 
+			// Se mapea entidad a ClienteDTO para retornarlo en el servicio
 			return new ResponseEntity<>(clientMapper.clientToClientDTO(cliente), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("createClient - error: {}", e);
