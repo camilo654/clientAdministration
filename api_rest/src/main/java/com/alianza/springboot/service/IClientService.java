@@ -24,6 +24,17 @@ public interface IClientService {
 	public ResponseEntity<List<ClientDTO>> getClients();
 
 	/**
+	 * Recibe un {@literal sharedKey} para buscar en la tabla {@literal Client}, si
+	 * encuentra un {@literal Client} con este id lo retorna.
+	 *
+	 * @param sharedKey es el id por el que se buscará al cliente en la DB
+	 * @return {@code ResponseEntity<ClientDTO>} con {@code HttpStatus} 200 si se
+	 *         encontró un {@literal Client} en la DB, o un {@code HttpStatus} 500
+	 *         si no fue posible
+	 */
+	public ResponseEntity<ClientDTO> getClientBySharedKey(String sharedKey);
+
+	/**
 	 * Recibe un {@literal ClientDTO} para almacenarlo en la tabla
 	 * {@literal Client}, si lo almacena con exito mapea el {@literal Client} a
 	 * {@literal ClientDTO} y lo retorna.
