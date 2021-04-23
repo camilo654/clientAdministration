@@ -3,6 +3,7 @@ package com.alianza.springboot.serviceimpl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,27 @@ public class ClientService implements IClientService {
 		} catch (Exception e) {
 			logger.error("getClients - error: {}", e);
 			return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@Override
+	public ResponseEntity<ClientDTO> getClientBySharedKey(String sharedKey) {
+		try {
+			logger.info("getClientBySharedKey - Se recuperan clientes de la DB");
+			Optional<Client> clientOpt = clientRepository.findBySharedKey(sharedKey);
+			logger.info("getClientBySharedKey - client: {}", clientOpt);
+
+			if (clientOpt.isPresent()) {
+				Client client = clientOpt.get();
+				// Se mapea entidad a ClienteDTO para retornarlo en el servicio
+				return new ResponseEntity<>(clientMapper.clientToClientDTO(client), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(new ClientDTO(), HttpStatus.OK);
+			}
+
+		} catch (Exception e) {
+			logger.error("getClientBySharedKey - error: {}", e);
+			return new ResponseEntity<>(new ClientDTO(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
