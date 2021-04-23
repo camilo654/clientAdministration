@@ -42,11 +42,7 @@ export class ClientComponent implements OnInit {
 
   }
 
-  cerrar() {
-    this.search = false;
-  }
-
-  openPopoUp() {
+  openPopUp() {
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: 'auto',
       height: 'auto',
@@ -56,10 +52,11 @@ export class ClientComponent implements OnInit {
         componente: 'crear'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
+    dialogRef.afterClosed().subscribe();
+  }
+
+  cerrar() {
+    this.search = false;
   }
 
 }

@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopUpComponent } from './shared/pop-up/pop-up.component';
 import { FormClientComponent } from './form-client/form-client.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormClientComponent } from './form-client/form-client.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     MatDialogModule,
     BrowserAnimationsModule,

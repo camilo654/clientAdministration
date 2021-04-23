@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Client } from '../Client';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-form-client',
@@ -7,22 +8,31 @@ import { Client } from '../Client';
   styleUrls: ['./form-client.component.css']
 })
 export class FormClientComponent implements OnInit {
-  @Input() client: Client; 
-  @Input() componente: string
+  @Input() client: Client;
+  @Input() componente: string;
   @Output() cerrar = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {
-    console.log(this.client)
+    if (!this.client) {
+      this.client = {
+        sharedKey: '',
+        bussinessID: '',
+        email: '',
+        phone: null,
+        dataAdded: null,
+        componente: null
+      }
+    }
   }
 
-  cerrarForm(){
+  cerrarForm() {
     if (this.componente === 'crear') {
-      console.log('crear')
-    } else {
-      this.cerrar.emit(true)
-      console.log('consultar')
-    } 
+      this.client.sharedKey = this.client.bussinessID[0] + this.client.bussinessID.split(' ')[1];
+      this.client.sharedKey = this.client.sharedKey.toLowerCase();
+      this.clientService.createClient(this.client).subscribe();
+    }
+    this.cerrar.emit(true);
   }
 }
