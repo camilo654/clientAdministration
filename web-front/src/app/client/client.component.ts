@@ -28,9 +28,10 @@ export class ClientComponent implements OnInit {
     this.clientService.getClients().subscribe(clients => this.clients = clients);
   }
 
-  searchClient() {
-    this.search = true
-    this.nameComponent = 'consultar'
+  searchClient(sharedKey: string) {
+    this.search = true;
+    this.nameComponent = 'consultar';
+    this.clientService.getClientBySharedKey(sharedKey).subscribe(client => this.clientSelected = client);
     this.clientSelected = {
       sharedKey: '',
       bussinessID: '',
