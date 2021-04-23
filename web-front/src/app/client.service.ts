@@ -9,7 +9,7 @@ import { Client } from './Client';
 })
 export class ClientService {
 
-  private clientUrl = 'http://localhost:8080/client';
+  private clientUrl = 'http://localhost:8080/client/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,11 +18,15 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.clientUrl)
+    return this.http.get<Client[]>(this.clientUrl);
+  }
+
+  getClientBySharedKey(sharedKey: string): Observable<Client> {
+    return this.http.get<Client>(this.clientUrl + sharedKey);
   }
 
   createClient(client: Client): Observable<Client> {
-    return this.http.post<Client>(this.clientUrl, client, this.httpOptions)
+    return this.http.post<Client>(this.clientUrl, client, this.httpOptions);
   }
 
 }

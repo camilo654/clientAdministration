@@ -11,3 +11,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .align-item-b{
     text-align: right;
 }
+.logo{
+    background-image: url('./assets/images/img_logo.png');
+    background-repeat: no-repeat;
+    background-size: 160px;
+    width: 100%;
+    height: 4em;
+}

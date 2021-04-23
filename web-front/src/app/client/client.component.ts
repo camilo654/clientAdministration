@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Client } from '../Client';
 import { ClientService } from '../client.service';
@@ -14,6 +14,10 @@ export class ClientComponent implements OnInit {
   clients: Client[];
   clientSelected: Client;
   nameComponent: string
+  sharedKeyClient: string;
+  userIcon = './assets/images/userIcon.png';
+  editIcon = './assets/images/edit-icon.webp';
+  editIconBW = './assets/images/editIconBW.png';
 
   constructor(
     private clientService: ClientService,
@@ -29,8 +33,9 @@ export class ClientComponent implements OnInit {
   }
 
   searchClient() {
-    this.search = true
-    this.nameComponent = 'consultar'
+    this.search = true;
+    this.nameComponent = 'consultar';
+    this.clientService.getClientBySharedKey(this.sharedKeyClient).subscribe(client => this.clientSelected = client);
     this.clientSelected = {
       sharedKey: '',
       bussinessID: '',
@@ -47,16 +52,18 @@ export class ClientComponent implements OnInit {
       width: 'auto',
       height: 'auto',
       data: {
-        name: '',
-        animal: '',
         componente: 'crear'
       }
     });
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe( rep => {
+      this.getClients();
+    }
+    );
   }
 
   cerrar() {
     this.search = false;
+    this.sharedKeyClient = '';
   }
 
 }
