@@ -27,6 +27,7 @@ export class ClientComponent implements OnInit {
   getClients(): void {
     this.clientService.getClients().subscribe(clients => this.clients = clients);
   }
+
   searchClient() {
     this.search = true
     this.nameComponent = 'consultar'
@@ -42,7 +43,7 @@ export class ClientComponent implements OnInit {
   }
 
   cerrar() {
-      this.search = false;
+    this.search = false;
   }
 
   openPopoUp() {
