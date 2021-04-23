@@ -1,0 +1,11 @@
+.icon{
+    width: 30px;
+}
+.lat-bar{
+    text-align: right;
+}
+.clientTitule{
+    color: rgb(52, 64, 225);
+    font-weight: bold;
+    font-size: 19px;
+}

@@ -15,6 +15,9 @@ export class ClientComponent implements OnInit {
   clientSelected: Client;
   nameComponent: string
   sharedKeyClient: string;
+  userIcon = './assets/images/userIcon.png';
+  editIcon = './assets/images/edit-icon.webp';
+  editIconBW = './assets/images/editIconBW.png';
 
   constructor(
     private clientService: ClientService,
