@@ -1,10 +1,11 @@
 <div class="container-fluid">
     <div class="title">
-        <label for="tittle">Alianza</label>
+        <label for="tittle">ICONO Alianza</label>
     </div>
     <div class="row">
         <div class="col-sm-2">
-            <label for="tittle">Alianza</label>
+            <label for="Clients">Icono Clients</label>
+            <br>
             <label for="Clients">Clients</label>
             <label for="Clients">Client look history</label>
             <label for="Clients">Emergency PIN configuration</label>
@@ -22,17 +23,17 @@
                 <div class="col-sm-3">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Enter shared key"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2" #client>
+                            aria-label="Recipient's username" aria-describedby="basic-addon2" id="sharedKeyClient"
+                            [(ngModel)]="sharedKeyClient">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button"
-                                (click)="searchClient(client.value)">Search</button>
+                                (click)="searchClient()">Search</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <app-form-client [client]="clientSelected" [componente]="nameComponent" (cerrar)="cerrar($event)"
-                *ngIf="search"></app-form-client>
+            <app-form-client [client]="clientSelected" [componente]="nameComponent" (cerrar)="cerrar($event)" *ngIf="search"></app-form-client>
             <div class="mt-3">
                 <label for="clients">Clients</label>
             </div>
@@ -44,7 +45,7 @@
                         <th class="col-md-2" scope="col">E-mail</th>
                         <th class="col-md-2" scope="col">Phone</th>
                         <th class="col-md-2" scope="col">Data Added</th>
-                        <th class="col-md-1" scope="col">icono de mierda</th>
+                        <th class="col-md-1" scope="col">icono</th>
                     </tr>
                 </thead>
                 <tbody>
