@@ -1,7 +1,7 @@
 package com.alianza.springboot.serviceimpl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,7 +72,7 @@ public class ClientService implements IClientService {
 	@Override
 	public ResponseEntity<ClientDTO> createClient(ClientDTO clientDTO) {
 		try {
-			clientDTO.setDataAdded(new Date());
+			clientDTO.setDataAdded(LocalDate.now());
 			logger.info("createClient - Se almacena cliente en la DB");
 			Client cliente = clientRepository.save(clientMapper.clientDTOToClient(clientDTO));
 			logger.info("createClient - cliente creado: {}", cliente);

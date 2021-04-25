@@ -1,7 +1,7 @@
 package com.alianza.springboot.entity;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,12 +21,12 @@ public class Client {
 	private String bussinessID;
 	private String email;
 	private BigInteger phone;
-	private Date dataAdded;
+	private LocalDate dataAdded;
 
 	public Client() {
 	}
 
-	public Client(String sharedKey, String bussinessID, String email, BigInteger phone, Date dataAdded) {
+	public Client(String sharedKey, String bussinessID, String email, BigInteger phone, LocalDate dataAdded) {
 		this.sharedKey = sharedKey;
 		this.bussinessID = bussinessID;
 		this.email = email;
