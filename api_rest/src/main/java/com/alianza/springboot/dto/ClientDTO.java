@@ -1,7 +1,7 @@
 package com.alianza.springboot.dto;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -16,6 +16,6 @@ public class ClientDTO {
 	private String bussinessID;
 	private String email;
 	private BigInteger phone;
-	private Date dataAdded;
+	private LocalDate dataAdded;
 
 }
