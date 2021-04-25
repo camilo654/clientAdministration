@@ -35,7 +35,6 @@ export class ClientComponent implements OnInit {
   searchClient() {
     this.search = true;
     this.nameComponent = 'consultar';
-    this.clientService.getClientBySharedKey(this.sharedKeyClient).subscribe(client => this.clientSelected = client);
     this.clientSelected = {
       sharedKey: '',
       bussinessID: '',
@@ -44,6 +43,9 @@ export class ClientComponent implements OnInit {
       dataAdded: null,
       componente: null
     };
+    this.clientService.getClientBySharedKey(this.sharedKeyClient).subscribe(client => {
+      this.clientSelected = client;
+    });
 
   }
 
@@ -55,7 +57,7 @@ export class ClientComponent implements OnInit {
         componente: 'crear'
       }
     });
-    dialogRef.afterClosed().subscribe( rep => {
+    dialogRef.afterClosed().subscribe(rep => {
       this.getClients();
     }
     );

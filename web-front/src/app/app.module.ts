@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopUpComponent } from './shared/pop-up/pop-up.component';
 import { FormClientComponent } from './form-client/form-client.component';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

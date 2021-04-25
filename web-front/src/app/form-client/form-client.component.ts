@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Client } from '../Client';
 import { ClientService } from '../client.service';
 
@@ -12,7 +13,13 @@ export class FormClientComponent implements OnInit {
   @Input() componente: string;
   @Output() cerrar = new EventEmitter<boolean>();
 
-  constructor(private clientService: ClientService) { }
+  date: string;
+
+  constructor(
+    private clientService: ClientService,
+    private datePipe: DatePipe,
+    private cdRef: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     if (!this.client) {
@@ -24,6 +31,24 @@ export class FormClientComponent implements OnInit {
         dataAdded: null,
         componente: null
       }
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.client.dataAdded) {
+      this.setFecha();
+      this.cdRef.detectChanges();
+    }
+  }
+
+  setFecha(): void {
+    if (this.componente === 'consultar') {
+      var fechaStr = new String(this.client.dataAdded);
+      var year = fechaStr.substring(0, 4);
+      var month = fechaStr.substring(5, 7);
+      var day = fechaStr.substring(8, 10);
+      const fecha = new Date(Number(year), Number(month) - 1, Number(day));
+      this.date = this.datePipe.transform(fecha, 'yyyy-MM-dd');
     }
   }
 

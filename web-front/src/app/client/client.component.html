@@ -74,7 +74,7 @@
                         <td>{{client.bussinessID}}</td>
                         <td>{{client.email}}</td>
                         <td>{{client.phone}}</td>
-                        <td>{{client.dataAdded}}</td>
+                        <td>{{client.dataAdded | date: 'dd/MM/yyyy'}}</td>
                         <td><img class="icon" [src]="editIconBW" alt=""></td>
                     </tr>
                 </tbody>
